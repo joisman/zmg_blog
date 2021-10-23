@@ -1,1 +1,5 @@
-# zmg_blog
+# Zemoga Blog
+## Test Application for Zemoga
+### Joisman Jiménez
+
+
