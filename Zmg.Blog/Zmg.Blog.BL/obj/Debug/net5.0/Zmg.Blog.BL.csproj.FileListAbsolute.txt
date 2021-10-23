@@ -1,0 +1,17 @@
+C:\source\zmg_blog\Zmg.Blog\Zmg.Blog.BL\obj\Debug\net5.0\Zmg.Blog.BL.csproj.AssemblyReference.cache
+C:\source\zmg_blog\Zmg.Blog\Zmg.Blog.BL\obj\Debug\net5.0\Zmg.Blog.BL.GeneratedMSBuildEditorConfig.editorconfig
+C:\source\zmg_blog\Zmg.Blog\Zmg.Blog.BL\obj\Debug\net5.0\Zmg.Blog.BL.AssemblyInfoInputs.cache
+C:\source\zmg_blog\Zmg.Blog\Zmg.Blog.BL\obj\Debug\net5.0\Zmg.Blog.BL.AssemblyInfo.cs
+C:\source\zmg_blog\Zmg.Blog\Zmg.Blog.BL\obj\Debug\net5.0\Zmg.Blog.BL.csproj.CoreCompileInputs.cache
+C:\source\zmg_blog\Zmg.Blog\Zmg.Blog.BL\bin\Debug\net5.0\Zmg.Blog.BL.deps.json
+C:\source\zmg_blog\Zmg.Blog\Zmg.Blog.BL\bin\Debug\net5.0\Zmg.Blog.BL.dll
+C:\source\zmg_blog\Zmg.Blog\Zmg.Blog.BL\bin\Debug\net5.0\ref\Zmg.Blog.BL.dll
+C:\source\zmg_blog\Zmg.Blog\Zmg.Blog.BL\bin\Debug\net5.0\Zmg.Blog.BL.pdb
+C:\source\zmg_blog\Zmg.Blog\Zmg.Blog.BL\bin\Debug\net5.0\Zmg.Blog.Domain.dll
+C:\source\zmg_blog\Zmg.Blog\Zmg.Blog.BL\bin\Debug\net5.0\Zmg.Blog.Repository.dll
+C:\source\zmg_blog\Zmg.Blog\Zmg.Blog.BL\bin\Debug\net5.0\Zmg.Blog.Domain.pdb
+C:\source\zmg_blog\Zmg.Blog\Zmg.Blog.BL\bin\Debug\net5.0\Zmg.Blog.Repository.pdb
+C:\source\zmg_blog\Zmg.Blog\Zmg.Blog.BL\obj\Debug\net5.0\Zmg.Blog.BL.csproj.CopyComplete
+C:\source\zmg_blog\Zmg.Blog\Zmg.Blog.BL\obj\Debug\net5.0\Zmg.Blog.BL.dll
+C:\source\zmg_blog\Zmg.Blog\Zmg.Blog.BL\obj\Debug\net5.0\ref\Zmg.Blog.BL.dll
+C:\source\zmg_blog\Zmg.Blog\Zmg.Blog.BL\obj\Debug\net5.0\Zmg.Blog.BL.pdb
