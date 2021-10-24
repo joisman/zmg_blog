@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +17,6 @@ namespace Zmg.Blog.API.Controllers
     public class PostController : ControllerBase
     {
         private readonly IPostBL _posts;
-
         public PostController(IPostBL posts)
         {
             _posts = posts;
@@ -23,16 +24,18 @@ namespace Zmg.Blog.API.Controllers
 
         // GET: api/<PostController>
         [HttpGet]
+        [Authorize]
         public async Task<IEnumerable<Post>> Get()
         {
+
             var obj = await _posts.GetAllPostsAsync();
             return obj.ToList();
         }
 
-        public async Task<IEnumerable<PostComment>> GetPostComments()
-        {
+        //public async Task<IEnumerable<PostComment>> GetPostComments()
+        //{
 
-        }
+        //}
 
         // GET api/<PostController>/5
         [HttpGet("{id}")]

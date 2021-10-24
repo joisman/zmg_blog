@@ -7,11 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Zmg.Blog.Domain.Models;
+using Zmg.Blog.Repository.Configuration;
+using Zmg.Blog.Repository.Helpers;
 
 namespace Zmg.Blog.Repository
 {
-    public class ApplicationDbContext : IdentityDbContext, IApplicationDbContext
+    public class ApplicationDbContext : IdentityDbContext<IdentityUser>
     {
+
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
         }
@@ -25,19 +28,24 @@ namespace Zmg.Blog.Repository
             {
                 entity.ToTable(name: "User");
             });
+
             builder.Entity<IdentityRole>(entity =>
             {
                 entity.ToTable(name: "Role");
                 entity.HasData(
-                    new IdentityRole { Id = Guid.NewGuid().ToString(), Name = "Public", NormalizedName = "PUBLIC" },
-                    new IdentityRole { Id = Guid.NewGuid().ToString(), Name = "Writer", NormalizedName = "WRITER" },
-                    new IdentityRole { Id = Guid.NewGuid().ToString(), Name = "Editor", NormalizedName = "EDITOR" }
+                    //new IdentityRole { Id =Constants.PUBLIC_ROLE_ID, Name = "Public", NormalizedName = "PUBLIC" },
+                    new IdentityRole { Id = Constants.WRITER_ROLE_ID, Name = "Writer", NormalizedName = "WRITER" },
+                    new IdentityRole { Id = Constants.EDITOR_ROLE_ID, Name = "Editor", NormalizedName = "EDITOR" },
+                    new IdentityRole { Id = Constants.ADMIN_ROLE_ID, Name = "Admin", NormalizedName = "ADMIN" }
                     );
-            })
-                ;
+            });
+            builder.ApplyConfiguration(new UserConfig());
+
+
             builder.Entity<IdentityUserRole<string>>(entity =>
             {
                 entity.ToTable("UserRoles");
+
             });
             builder.Entity<IdentityUserClaim<string>>(entity =>
             {
@@ -62,8 +70,8 @@ namespace Zmg.Blog.Repository
                 new Post { id = 3, title = "Third post", content = "Test 3", created_at = DateTime.Now, last_modified_at = DateTime.Now, username = "jdoe", status = 1 }
                 );
 
-            //builder.Entity<PostComment>
-
+            // Seed users and roles.
+            builder.ApplyConfiguration(new UserWithRolesConfig());
         }
 
         public DbSet<Post> Posts { get; set; }

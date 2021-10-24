@@ -48,24 +48,24 @@ namespace Zmg.Blog.Repository.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "dd9e2ddf-e5f3-408f-bcb5-db6ea09c34ac",
-                            ConcurrencyStamp = "de2b7987-1447-44a2-839e-c6a2ef80bf21",
-                            Name = "Public",
-                            NormalizedName = "PUBLIC"
-                        },
-                        new
-                        {
-                            Id = "0c7f5aec-1391-4ea0-8e7a-5787a1b4d07e",
-                            ConcurrencyStamp = "5cd109fb-c1df-4e3b-a4f4-708afa2c7bc6",
+                            Id = "5CE205D4-FD33-4889-81FD-974E1D5DAA85",
+                            ConcurrencyStamp = "f6d11b1f-8819-4f48-8265-4c705c94d1cb",
                             Name = "Writer",
                             NormalizedName = "WRITER"
                         },
                         new
                         {
-                            Id = "9cb7cfb7-2783-4b74-98ee-d817ee58f94d",
-                            ConcurrencyStamp = "6e850afd-68db-4cae-86c9-95743c4e4788",
+                            Id = "1F990C39-A60D-4598-A7AC-1B33C5249897",
+                            ConcurrencyStamp = "955ef492-e6b7-4eeb-b8c4-f39d4a3b364b",
                             Name = "Editor",
                             NormalizedName = "EDITOR"
+                        },
+                        new
+                        {
+                            Id = "1E6284BA-3365-4F58-9FF7-24ECC21B5095",
+                            ConcurrencyStamp = "3e8dea32-2d32-4fcc-91b5-8c7339878907",
+                            Name = "Admin",
+                            NormalizedName = "ADMIN"
                         });
                 });
 
@@ -156,6 +156,59 @@ namespace Zmg.Blog.Repository.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("User");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "27FF60CB-AE2D-45E5-ACBB-1B7094D73B2D",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "3998a6ae-2f76-47ce-8759-21a9fd3fd6b8",
+                            Email = "Admin@zemogablog.com",
+                            EmailConfirmed = true,
+                            LockoutEnabled = false,
+                            NormalizedEmail = "ADMIN@ZEMOGABLOG.COM",
+                            NormalizedUserName = "BLOGADMIN",
+                            PasswordHash = "AQAAAAEAACcQAAAAEKR6zVsYL4rvs0tXSgqLH0wflyVFFm13mQsRpc0RKyaMnBxEWq7+PS/IKFN2rLOPXQ==",
+                            PhoneNumber = "XXXXXXXXXXXXX",
+                            PhoneNumberConfirmed = true,
+                            SecurityStamp = "00000000-0000-0000-0000-000000000000",
+                            TwoFactorEnabled = false,
+                            UserName = "blogadmin"
+                        },
+                        new
+                        {
+                            Id = "C5D0CB6E-7575-4C82-A42C-9EBBC41220D1",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "6f548d7e-aaca-44a8-b00a-fa3d04f00713",
+                            Email = "writer@zemogablog.com",
+                            EmailConfirmed = true,
+                            LockoutEnabled = false,
+                            NormalizedEmail = "WRITER@ZEMOGABLOG.COM",
+                            NormalizedUserName = "BLOGWRITER",
+                            PasswordHash = "AQAAAAEAACcQAAAAEFkGLMzRyQ3fFLFXJep2MR7xgtRPAIrVVqkcj1tDE7NltC5xX4SNYqYQWLTS0Yzi3Q==",
+                            PhoneNumber = "XXXXXXXXXXXXX",
+                            PhoneNumberConfirmed = true,
+                            SecurityStamp = "00000000-0000-0000-0000-000000000000",
+                            TwoFactorEnabled = false,
+                            UserName = "blogwriter"
+                        },
+                        new
+                        {
+                            Id = "8238CBD2-3304-4346-BF20-00F897881458",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "f28723db-ca12-4cbd-b414-beb5fa5cfb14",
+                            Email = "editor@zemogablog.com",
+                            EmailConfirmed = true,
+                            LockoutEnabled = false,
+                            NormalizedEmail = "EDITOR@ZEMOGABLOG.COM",
+                            NormalizedUserName = "BLOGEDITOR",
+                            PasswordHash = "AQAAAAEAACcQAAAAEHe06Cp5w/OqrF2UA+C4Vxe7HoLh2WIc8tVvF0/zUA3VCBPvx10hDePGnh91T6TsCw==",
+                            PhoneNumber = "XXXXXXXXXXXXX",
+                            PhoneNumberConfirmed = true,
+                            SecurityStamp = "00000000-0000-0000-0000-000000000000",
+                            TwoFactorEnabled = false,
+                            UserName = "blogeditor"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
@@ -219,6 +272,23 @@ namespace Zmg.Blog.Repository.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("UserRoles");
+
+                    b.HasData(
+                        new
+                        {
+                            UserId = "27FF60CB-AE2D-45E5-ACBB-1B7094D73B2D",
+                            RoleId = "1E6284BA-3365-4F58-9FF7-24ECC21B5095"
+                        },
+                        new
+                        {
+                            UserId = "C5D0CB6E-7575-4C82-A42C-9EBBC41220D1",
+                            RoleId = "5CE205D4-FD33-4889-81FD-974E1D5DAA85"
+                        },
+                        new
+                        {
+                            UserId = "8238CBD2-3304-4346-BF20-00F897881458",
+                            RoleId = "1F990C39-A60D-4598-A7AC-1B33C5249897"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
@@ -279,8 +349,8 @@ namespace Zmg.Blog.Repository.Migrations
                         {
                             id = 1,
                             content = "Test 1",
-                            created_at = new DateTime(2021, 10, 23, 16, 15, 15, 476, DateTimeKind.Local).AddTicks(3360),
-                            last_modified_at = new DateTime(2021, 10, 23, 16, 15, 15, 477, DateTimeKind.Local).AddTicks(936),
+                            created_at = new DateTime(2021, 10, 24, 15, 30, 48, 151, DateTimeKind.Local).AddTicks(6122),
+                            last_modified_at = new DateTime(2021, 10, 24, 15, 30, 48, 152, DateTimeKind.Local).AddTicks(2663),
                             status = 1,
                             title = "First post",
                             username = "jdoe"
@@ -289,8 +359,8 @@ namespace Zmg.Blog.Repository.Migrations
                         {
                             id = 2,
                             content = "Test 2",
-                            created_at = new DateTime(2021, 10, 23, 16, 15, 15, 477, DateTimeKind.Local).AddTicks(1875),
-                            last_modified_at = new DateTime(2021, 10, 23, 16, 15, 15, 477, DateTimeKind.Local).AddTicks(1880),
+                            created_at = new DateTime(2021, 10, 24, 15, 30, 48, 152, DateTimeKind.Local).AddTicks(3456),
+                            last_modified_at = new DateTime(2021, 10, 24, 15, 30, 48, 152, DateTimeKind.Local).AddTicks(3459),
                             status = 2,
                             title = "Second post",
                             username = "jdoe"
@@ -299,8 +369,8 @@ namespace Zmg.Blog.Repository.Migrations
                         {
                             id = 3,
                             content = "Test 3",
-                            created_at = new DateTime(2021, 10, 23, 16, 15, 15, 477, DateTimeKind.Local).AddTicks(1882),
-                            last_modified_at = new DateTime(2021, 10, 23, 16, 15, 15, 477, DateTimeKind.Local).AddTicks(1883),
+                            created_at = new DateTime(2021, 10, 24, 15, 30, 48, 152, DateTimeKind.Local).AddTicks(3461),
+                            last_modified_at = new DateTime(2021, 10, 24, 15, 30, 48, 152, DateTimeKind.Local).AddTicks(3462),
                             status = 1,
                             title = "Third post",
                             username = "jdoe"

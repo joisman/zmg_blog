@@ -18,6 +18,7 @@ using System.Threading.Tasks;
 using Zmg.Blog.BL;
 using Zmg.Blog.BL.Interfaces;
 using Zmg.Blog.Domain.Interfaces;
+using Zmg.Blog.Domain.Models;
 using Zmg.Blog.Repository;
 
 namespace Zmg.Blog.API
@@ -46,7 +47,7 @@ namespace Zmg.Blog.API
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Zmg.Blog.API", Version = "v1" });
             });
 
-
+            services.AddIdentity<User, Role>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<IPostBL, PostBL>();
         }
