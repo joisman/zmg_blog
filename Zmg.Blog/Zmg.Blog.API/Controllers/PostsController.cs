@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,26 +34,35 @@ namespace Zmg.Blog.API.Controllers
 
         // GET: api/<PostController>
         [HttpGet]
+        [AllowAnonymous]
         public async Task<IEnumerable<Post>> Get()
         {
             List<Post> posts = new List<Post>();
 
             // Get user role in order to retrieve their own posts.
             var user = _httpContextAccessor.HttpContext.User;
-            string userRole = user.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Role).Value;
-
-            //
-            switch (userRole.ToLower())
+            if (user.HasClaim(x => x.Type == ClaimTypes.Role))
             {
-                case "writer":
-                    posts = await _posts.GetPostsByUsernameAsync(user.Identity.Name);
-                    break;
-                case "editor":
-                    posts = await _posts.GetPostsByStatusAsync(PostStatus.Pending);
-                    break;
-                default:
-                    posts = await _posts.GetPostsByStatusAsync(PostStatus.Approved);
-                    break;
+
+                string userRole = user.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Role).Value;
+
+                //
+                switch (userRole.ToLower())
+                {
+                    case "writer":
+                        posts = await _posts.GetPostsByUsernameAsync(user.Identity.Name);
+                        break;
+                    case "editor":
+                        posts = await _posts.GetPostsByStatusAsync(PostStatus.Pending);
+                        break;
+                    default:
+                        posts = await _posts.GetPostsByStatusAsync(PostStatus.Approved);
+                        break;
+                }
+            }
+            else
+            {
+                posts = await _posts.GetPostsByStatusAsync(PostStatus.Approved);
             }
 
             return posts.ToList();
@@ -76,8 +86,8 @@ namespace Zmg.Blog.API.Controllers
 
             await _posts.CreateAsync(post);
 
+            return Ok(new { success = true, message = "Post created successfully!" });
 
-            return Ok("Post created successfully!");
         }
 
         [HttpPut("{id}")]
@@ -85,12 +95,12 @@ namespace Zmg.Blog.API.Controllers
         public async Task<IActionResult> Put(int id, [FromBody] PostDTO postDTO)
         {
             if (postDTO == null)
-                return BadRequest();
+                return NotFound(new { success = false, message = "Post not found." });
 
             var post = await _posts.GetPostByIdAsync(id);
 
             if (post.status == (int)PostStatus.PendingApproval)
-                return BadRequest("The post is locked");
+                return BadRequest(new { success = false, message = "Couldn't submit the post. This post is locked." });
 
             post.content = postDTO.Content;
             post.created_at = DateTime.Now;
@@ -101,11 +111,11 @@ namespace Zmg.Blog.API.Controllers
 
             await _posts.UpdateAsync(post);
 
-            return Ok("Post updated successfully!");
+            return Ok(new { success = true, message = "Post updated successfully!" });
 
         }
 
-        [HttpGet]
+        [HttpPut]
         [Route("{id}/submit")]
         [Authorize(Roles = "Writer")]
         public async Task<IActionResult> Submit(int id)
@@ -113,21 +123,21 @@ namespace Zmg.Blog.API.Controllers
             var post = await _posts.GetPostByIdAsync(id);
 
             if (post == null)
-                return NotFound("Post not found");
+                return NotFound(new { success = false, message = "Post not found" });
 
             if (post.status == (int)PostStatus.PendingApproval)
-                return BadRequest("The post is locked");
+                return BadRequest(new { success = false, message = "Couldn't submit the post. This post is locked." });
 
             post.username = _httpContextAccessor.HttpContext.User.Identity.Name;
             post.last_modified_at = DateTime.Now;
             post.status = (int)PostStatus.PendingApproval;
             await _posts.UpdateAsync(post);
 
-            return Ok("Post submitted successfully!");
+            return Ok(new { success = true, message = "Post submitted successfully!" });
         }
 
 
-        [HttpGet]
+        [HttpPut]
         [Route("{id}/approve")]
         [Authorize(Roles = "Editor")]
         public async Task<IActionResult> Approve(int id)
@@ -135,14 +145,14 @@ namespace Zmg.Blog.API.Controllers
             var post = await _posts.GetPostByIdAsync(id);
 
             if (post == null)
-                return NotFound("Post not found");
+                return NotFound(new { success = false, message = "Post not found" });
 
             post.username = _httpContextAccessor.HttpContext.User.Identity.Name;
             post.last_modified_at = DateTime.Now;
             post.status = (int)PostStatus.Approved;
             await _posts.UpdateAsync(post);
 
-            return Ok("Post approved successfully!");
+            return Ok(new { success = true, message = "Post approved successfully!" });
         }
 
         [HttpPut]
@@ -153,10 +163,10 @@ namespace Zmg.Blog.API.Controllers
             var post = await _posts.GetPostByIdAsync(id);
 
             if (post == null)
-                return NotFound("Post not found");
+                return NotFound(new { success = false, message = "Post not found" });
 
             if (post.status != (int)PostStatus.Pending)
-                return BadRequest("This post can't be updated.");
+                return BadRequest(new { success = false, message = "This post can't be updated because is already published." });
 
             post.username = _httpContextAccessor.HttpContext.User.Identity.Name;
             post.last_modified_at = DateTime.Now;
@@ -164,12 +174,12 @@ namespace Zmg.Blog.API.Controllers
             post.status = (int)PostStatus.Rejected;
             await _posts.UpdateAsync(post);
 
-            return Ok("Post has been rejected");
+            return Ok(new { success = true, message = "The post has been rejected" });
         }
 
 
-        [Route("{id}/comment")]
         [HttpPost]
+        [Route("{id}/comment")]
         public async Task<IActionResult> PostComment(int id, [FromBody] string content)
         {
 
@@ -183,11 +193,40 @@ namespace Zmg.Blog.API.Controllers
                 var user = _httpContextAccessor.HttpContext.User;
                 await _posts.AddCommentAsync(post, content, user.Identity.Name);
 
-                return Ok("Comment posted successfully!");
+                return Ok(new { success = true, message = "Comment posted successfully!" });
             }
             catch (Exception ex)
             {
-                return BadRequest($"Error adding comment to post: {ex.Message}");
+                return BadRequest(new { success = false, message = $"Error adding comment to post: {ex.Message}" });
+            }
+        }
+
+        [HttpGet]
+        [Route("{id}/comment")]
+        [AllowAnonymous]
+        public async Task<IActionResult> GetPostComments(int id)
+        {
+
+            try
+            {
+                var post = await _posts.GetPostByIdAsync(id);
+
+                if (post == null)
+                    return NotFound("Post not found");
+
+                var comments = await _posts.GetPostCommentsAsync(id);
+
+                string json = JsonConvert.SerializeObject(comments, new JsonSerializerSettings
+                {
+                    ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
+                    MaxDepth = 1
+                });
+
+                return Ok(json);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { success = false, message = $"Error adding comment to post: {ex.Message}" });
             }
         }
 

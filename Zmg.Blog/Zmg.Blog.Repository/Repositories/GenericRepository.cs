@@ -43,7 +43,6 @@ namespace Zmg.Blog.Repository.Repositories
         public virtual async Task<T> GetById(int id)
         {
             return await dbSet.FindAsync(id);
-
         }
 
         public virtual async Task<bool> Update(T entity)

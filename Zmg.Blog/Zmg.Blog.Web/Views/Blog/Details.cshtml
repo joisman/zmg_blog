@@ -1,0 +1,26 @@
+﻿@model IEnumerable<Zmg.Blog.Web.Models.PostCommentModel>
+
+@{
+    ViewData["Title"] = "Post";
+}
+
+<h1>@Html.DisplayFor(model => model.FirstOrDefault().Post.title)</h1>
+<hr />
+
+<p>@Html.DisplayFor(model => model.FirstOrDefault().Post.content)</p>
+
+<h4>Comments</h4>
+<hr />
+@foreach (var item in Model)
+{
+    <p class="comment-author">
+        <b>@Html.DisplayFor(modelItem => item.username)</b> <br />
+        @Html.DisplayFor(modelItem => item.content)
+            <p class="text-muted justify-content-md-end">@Html.DisplayFor(modelItem => item.created_at)</p>
+    </p>
+    <hr />
+
+}
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>

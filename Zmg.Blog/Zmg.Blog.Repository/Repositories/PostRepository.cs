@@ -116,7 +116,7 @@ namespace Zmg.Blog.Repository.Repositories
 
         public async Task<List<PostComment>> GetPostCommentsByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            return await context.Comments.Where(x => x.Post.id == id).ToListAsync();
         }
     }
 }

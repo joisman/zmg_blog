@@ -38,7 +38,11 @@ namespace Zmg.Blog.Web
             services.AddControllersWithViews();
 
             // IoC
-            services.AddTransient<IUnitOfWork, UnitOfWork>();
+            //services.AddTransient<IUnitOfWork, UnitOfWork>();
+            services.AddHttpClient("blogAPI", x =>
+            {
+                x.BaseAddress = new Uri("https://localhost:44341/api/");
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -67,7 +71,7 @@ namespace Zmg.Blog.Web
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Blog}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
             });
         }

@@ -55,9 +55,9 @@ namespace Zmg.Blog.BL
             return await _unitOfWork.Posts.GetPostsByUsername(username);
         }
 
-        public Task<List<PostComment>> GetPostCommentsAsync(int postId)
+        public async Task<List<PostComment>> GetPostCommentsAsync(int postId)
         {
-            throw new NotImplementedException();
+            return await _unitOfWork.Posts.GetPostCommentsByIdAsync(postId);
         }
 
         public async Task UpdateAsync(Post post)

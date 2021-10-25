@@ -70,12 +70,10 @@ namespace Zmg.Blog.Repository.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
                     b.Property<string>("LoginProvider")
-                        .HasMaxLength(128)
-                        .HasColumnType("nvarchar(128)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("ProviderKey")
-                        .HasMaxLength(128)
-                        .HasColumnType("nvarchar(128)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("ProviderDisplayName")
                         .HasColumnType("nvarchar(max)");
@@ -129,12 +127,10 @@ namespace Zmg.Blog.Repository.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("LoginProvider")
-                        .HasMaxLength(128)
-                        .HasColumnType("nvarchar(128)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Name")
-                        .HasMaxLength(128)
-                        .HasColumnType("nvarchar(128)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Value")
                         .HasColumnType("nvarchar(max)");
@@ -183,32 +179,32 @@ namespace Zmg.Blog.Repository.Migrations
                         new
                         {
                             id = 1,
-                            content = "Test 1",
-                            created_at = new DateTime(2021, 10, 24, 20, 20, 34, 208, DateTimeKind.Local).AddTicks(2039),
-                            last_modified_at = new DateTime(2021, 10, 24, 20, 20, 34, 208, DateTimeKind.Local).AddTicks(8458),
+                            content = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut quis nibh nec sapien rutrum fermentum ut sit amet nulla. Vestibulum id dignissim erat, a aliquam purus. Aenean tellus odio, facilisis at ex vitae, pellentesque aliquam enim. Duis eget mi vel turpis molestie dignissim sit amet et tellus. In et erat nunc. Duis tincidunt imperdiet elit in vestibulum.",
+                            created_at = new DateTime(2021, 10, 25, 2, 16, 23, 820, DateTimeKind.Local).AddTicks(6366),
+                            last_modified_at = new DateTime(2021, 10, 25, 2, 16, 23, 821, DateTimeKind.Local).AddTicks(3447),
                             status = 1,
                             title = "First post",
-                            username = "jdoe"
+                            username = "blogwriter"
                         },
                         new
                         {
                             id = 2,
-                            content = "Test 2",
-                            created_at = new DateTime(2021, 10, 24, 20, 20, 34, 208, DateTimeKind.Local).AddTicks(9205),
-                            last_modified_at = new DateTime(2021, 10, 24, 20, 20, 34, 208, DateTimeKind.Local).AddTicks(9210),
+                            content = "In dolor lacus, pulvinar id blandit nec, aliquet quis ante. Sed ac efficitur lacus, vel finibus felis. Cras condimentum ex quis ante mollis, vel pretium diam ultricies. Integer vel fermentum sem, et venenatis ligula.",
+                            created_at = new DateTime(2021, 10, 25, 2, 16, 23, 821, DateTimeKind.Local).AddTicks(4141),
+                            last_modified_at = new DateTime(2021, 10, 25, 2, 16, 23, 821, DateTimeKind.Local).AddTicks(4145),
                             status = 2,
                             title = "Second post",
-                            username = "jdoe"
+                            username = "blogwriter"
                         },
                         new
                         {
                             id = 3,
-                            content = "Test 3",
-                            created_at = new DateTime(2021, 10, 24, 20, 20, 34, 208, DateTimeKind.Local).AddTicks(9212),
-                            last_modified_at = new DateTime(2021, 10, 24, 20, 20, 34, 208, DateTimeKind.Local).AddTicks(9212),
+                            content = "In hac habitasse platea dictumst. In rhoncus, arcu et euismod maximus, nulla elit consequat dui, vitae bibendum erat quam eu odio. Vivamus sed odio dui. Nulla facilisi. Cras elementum feugiat sem, in pellentesque augue lobortis ut. Duis eleifend, nisl id convallis luctus, ex enim fermentum ex, non vehicula diam risus in ante. Fusce ac facilisis nulla.",
+                            created_at = new DateTime(2021, 10, 25, 2, 16, 23, 821, DateTimeKind.Local).AddTicks(4147),
+                            last_modified_at = new DateTime(2021, 10, 25, 2, 16, 23, 821, DateTimeKind.Local).AddTicks(4148),
                             status = 1,
                             title = "Third post",
-                            username = "jdoe"
+                            username = "blogwriter"
                         });
                 });
 
@@ -272,21 +268,21 @@ namespace Zmg.Blog.Repository.Migrations
                         new
                         {
                             Id = "5CE205D4-FD33-4889-81FD-974E1D5DAA85",
-                            ConcurrencyStamp = "74ec5aa7-e69f-4f09-98d9-03e3d0ca4444",
+                            ConcurrencyStamp = "d35fbe02-d85e-43e4-8452-cca349d34fee",
                             Name = "Writer",
                             NormalizedName = "WRITER"
                         },
                         new
                         {
                             Id = "1F990C39-A60D-4598-A7AC-1B33C5249897",
-                            ConcurrencyStamp = "5077c4fb-3d3c-4c38-b786-4a512170a56f",
+                            ConcurrencyStamp = "be5d5af1-09de-4bc5-9b9f-8f1b9a5a7346",
                             Name = "Editor",
                             NormalizedName = "EDITOR"
                         },
                         new
                         {
                             Id = "1E6284BA-3365-4F58-9FF7-24ECC21B5095",
-                            ConcurrencyStamp = "9469fa6d-6f50-4aae-b5fb-8c0d2d1985ca",
+                            ConcurrencyStamp = "10d486c1-415d-4f30-9923-430d20734bc1",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });
@@ -364,13 +360,13 @@ namespace Zmg.Blog.Repository.Migrations
                         {
                             Id = "27FF60CB-AE2D-45E5-ACBB-1B7094D73B2D",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "f8a0e975-539d-4049-9a18-3d7cb5de7725",
+                            ConcurrencyStamp = "d2699ba4-1464-49dd-ba33-19f801144525",
                             Email = "Admin@zemogablog.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@ZEMOGABLOG.COM",
                             NormalizedUserName = "BLOGADMIN",
-                            PasswordHash = "AQAAAAEAACcQAAAAEA9Pz0Duk7Smf4IVcyTH+S9bY6+zIwuhvF52/byY3Jy24kELurGTOScpofnyiy1neQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAENvMpQjLyUwrrxyVBdeoODPWsxN01BfmOlYdjmcTZ095YuPRY6YdtyHrApJI5N94XQ==",
                             PhoneNumber = "XXXXXXXXXXXXX",
                             PhoneNumberConfirmed = true,
                             SecurityStamp = "00000000-0000-0000-0000-000000000000",
@@ -381,13 +377,13 @@ namespace Zmg.Blog.Repository.Migrations
                         {
                             Id = "C5D0CB6E-7575-4C82-A42C-9EBBC41220D1",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "27f61c73-3994-46f7-89b1-fafb322ca3db",
+                            ConcurrencyStamp = "2d9fdee3-1ee3-49b8-a7d7-50a5353e4b73",
                             Email = "writer@zemogablog.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "WRITER@ZEMOGABLOG.COM",
                             NormalizedUserName = "BLOGWRITER",
-                            PasswordHash = "AQAAAAEAACcQAAAAELv8ZHObCWj5s4HQSXUffYlV3pAUbIpTh3bjRaxFGr3OLND1fs+YC8vh5Y6zBho5Dw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEO3VpzY34ToXxHHz6JKMblS0oF5Nw9lFTyYTSvNNcASXjBwyePFoSOsV08oifNzYTA==",
                             PhoneNumber = "XXXXXXXXXXXXX",
                             PhoneNumberConfirmed = true,
                             SecurityStamp = "00000000-0000-0000-0000-000000000000",
@@ -398,13 +394,13 @@ namespace Zmg.Blog.Repository.Migrations
                         {
                             Id = "8238CBD2-3304-4346-BF20-00F897881458",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "65c19bd1-0d70-4e08-bac6-0026d10a3ca8",
+                            ConcurrencyStamp = "5b014efb-d890-409f-9c7a-f6920d3ce91f",
                             Email = "editor@zemogablog.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "EDITOR@ZEMOGABLOG.COM",
                             NormalizedUserName = "BLOGEDITOR",
-                            PasswordHash = "AQAAAAEAACcQAAAAEL0kzsGioXOBnMnGwyqj102CJ5krsQvCoLe1c3nMQKwvdbxlhvgQGLE5qHRXdZGfdA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEHGQPyiKK3N5v32goauXvE9TomXYSFGw8+JvIbT1HK3Rb7rUNPmmgaJTXilao45uMw==",
                             PhoneNumber = "XXXXXXXXXXXXX",
                             PhoneNumberConfirmed = true,
                             SecurityStamp = "00000000-0000-0000-0000-000000000000",

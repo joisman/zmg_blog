@@ -1,0 +1,14 @@
+﻿@model IEnumerable<Zmg.Blog.Domain.Models.PostComment>
+
+
+    @foreach (var item in Model)
+    {
+
+        <p class="comment-author"> @Html.DisplayFor(modelItem => item.username) said: </p>
+
+        <p> @Html.DisplayFor(modelItem => item.content)</p>
+
+        <p class="text-muted justify-content-md-end">@Html.DisplayFor(modelItem => item.created_at)</p>
+
+    }
+

@@ -202,3 +202,6 @@ C:\source\zmg_blog\Zmg.Blog\Zmg.Blog.Web\obj\Debug\net5.0\Zmg.Blog.Web.dll
 C:\source\zmg_blog\Zmg.Blog\Zmg.Blog.Web\obj\Debug\net5.0\ref\Zmg.Blog.Web.dll
 C:\source\zmg_blog\Zmg.Blog\Zmg.Blog.Web\obj\Debug\net5.0\Zmg.Blog.Web.pdb
 C:\source\zmg_blog\Zmg.Blog\Zmg.Blog.Web\obj\Debug\net5.0\Zmg.Blog.Web.genruntimeconfig.cache
+C:\source\zmg_blog\Zmg.Blog\Zmg.Blog.Web\obj\Debug\net5.0\Razor\Views\Blog\Index.cshtml.g.cs
+C:\source\zmg_blog\Zmg.Blog\Zmg.Blog.Web\obj\Debug\net5.0\Razor\Views\Blog\Details.cshtml.g.cs
+C:\source\zmg_blog\Zmg.Blog\Zmg.Blog.Web\obj\Debug\net5.0\Razor\Views\Shared\_Comments.cshtml.g.cs

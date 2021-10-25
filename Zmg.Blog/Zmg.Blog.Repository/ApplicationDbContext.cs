@@ -64,9 +64,9 @@ namespace Zmg.Blog.Repository
             });
 
             builder.Entity<Post>().HasData(
-                new Post { id = 1, title = "First post", content = "Test 1", created_at = DateTime.Now, last_modified_at = DateTime.Now, username = "jdoe", status = 1 },
-                new Post { id = 2, title = "Second post", content = "Test 2", created_at = DateTime.Now, last_modified_at = DateTime.Now, username = "jdoe", status = 2 },
-                new Post { id = 3, title = "Third post", content = "Test 3", created_at = DateTime.Now, last_modified_at = DateTime.Now, username = "jdoe", status = 1 }
+                new Post { id = 1, title = "First post", content = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut quis nibh nec sapien rutrum fermentum ut sit amet nulla. Vestibulum id dignissim erat, a aliquam purus. Aenean tellus odio, facilisis at ex vitae, pellentesque aliquam enim. Duis eget mi vel turpis molestie dignissim sit amet et tellus. In et erat nunc. Duis tincidunt imperdiet elit in vestibulum.", created_at = DateTime.Now, last_modified_at = DateTime.Now, username = "blogwriter", status = 1 },
+                new Post { id = 2, title = "Second post", content = "In dolor lacus, pulvinar id blandit nec, aliquet quis ante. Sed ac efficitur lacus, vel finibus felis. Cras condimentum ex quis ante mollis, vel pretium diam ultricies. Integer vel fermentum sem, et venenatis ligula.", created_at = DateTime.Now, last_modified_at = DateTime.Now, username = "blogwriter", status = 2 },
+                new Post { id = 3, title = "Third post", content = "In hac habitasse platea dictumst. In rhoncus, arcu et euismod maximus, nulla elit consequat dui, vitae bibendum erat quam eu odio. Vivamus sed odio dui. Nulla facilisi. Cras elementum feugiat sem, in pellentesque augue lobortis ut. Duis eleifend, nisl id convallis luctus, ex enim fermentum ex, non vehicula diam risus in ante. Fusce ac facilisis nulla.", created_at = DateTime.Now, last_modified_at = DateTime.Now, username = "blogwriter", status = 1 }
                 );
 
             // Seed users and roles.

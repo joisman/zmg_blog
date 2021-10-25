@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "AyGTJkuCjkjQIe9tZUAPiVm1f0QyQXoJrjPSzLN1dwGfpa9/ge/GVhOWvVrt+CtoK6uXS+n78EoZ2sWqFsWmOg==",
+  "dgSpecHash": "cTFniHTuLFCOlR7c85ar6oWqW/j8bfGJv4QBQjJe2c6MkKD2luWrLlWlVlertoXQWfC3Jy7esVUp85hbuVj1XQ==",
   "success": true,
   "projectFilePath": "C:\\source\\zmg_blog\\Zmg.Blog\\Zmg.Blog.Web\\Zmg.Blog.Web.csproj",
   "expectedPackageFiles": [
@@ -62,7 +62,7 @@
     "C:\\Users\\jjimenez\\.nuget\\packages\\microsoft.visualstudio.web.codegenerators.mvc\\5.0.2\\microsoft.visualstudio.web.codegenerators.mvc.5.0.2.nupkg.sha512",
     "C:\\Users\\jjimenez\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
     "C:\\Users\\jjimenez\\.nuget\\packages\\microsoft.win32.systemevents\\4.7.0\\microsoft.win32.systemevents.4.7.0.nupkg.sha512",
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\newtonsoft.json\\11.0.2\\newtonsoft.json.11.0.2.nupkg.sha512",
+    "C:\\Users\\jjimenez\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\runtime.native.system\\4.3.0\\runtime.native.system.4.3.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.collections\\4.3.0\\system.collections.4.3.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.collections.concurrent\\4.3.0\\system.collections.concurrent.4.3.0.nupkg.sha512",
