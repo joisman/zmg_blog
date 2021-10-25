@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Zmg.Blog.Repository.Migrations
 {
-    public partial class seed_roles : Migration
+    public partial class create_roles : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -66,77 +66,62 @@ namespace Zmg.Blog.Repository.Migrations
                 oldType: "nvarchar(max)",
                 oldNullable: true);
 
+            migrationBuilder.AddColumn<string>(
+                name: "FullName",
+                table: "User",
+                type: "nvarchar(max)",
+                nullable: true);
+
             migrationBuilder.UpdateData(
                 table: "Posts",
                 keyColumn: "id",
                 keyValue: 1,
                 columns: new[] { "created_at", "last_modified_at" },
-                values: new object[] { new DateTime(2021, 10, 24, 15, 30, 48, 151, DateTimeKind.Local).AddTicks(6122), new DateTime(2021, 10, 24, 15, 30, 48, 152, DateTimeKind.Local).AddTicks(2663) });
+                values: new object[] { new DateTime(2021, 10, 24, 17, 51, 45, 977, DateTimeKind.Local).AddTicks(8423), new DateTime(2021, 10, 24, 17, 51, 45, 978, DateTimeKind.Local).AddTicks(5204) });
 
             migrationBuilder.UpdateData(
                 table: "Posts",
                 keyColumn: "id",
                 keyValue: 2,
                 columns: new[] { "created_at", "last_modified_at" },
-                values: new object[] { new DateTime(2021, 10, 24, 15, 30, 48, 152, DateTimeKind.Local).AddTicks(3456), new DateTime(2021, 10, 24, 15, 30, 48, 152, DateTimeKind.Local).AddTicks(3459) });
+                values: new object[] { new DateTime(2021, 10, 24, 17, 51, 45, 978, DateTimeKind.Local).AddTicks(5993), new DateTime(2021, 10, 24, 17, 51, 45, 978, DateTimeKind.Local).AddTicks(5997) });
 
             migrationBuilder.UpdateData(
                 table: "Posts",
                 keyColumn: "id",
                 keyValue: 3,
                 columns: new[] { "created_at", "last_modified_at" },
-                values: new object[] { new DateTime(2021, 10, 24, 15, 30, 48, 152, DateTimeKind.Local).AddTicks(3461), new DateTime(2021, 10, 24, 15, 30, 48, 152, DateTimeKind.Local).AddTicks(3462) });
+                values: new object[] { new DateTime(2021, 10, 24, 17, 51, 45, 978, DateTimeKind.Local).AddTicks(5999), new DateTime(2021, 10, 24, 17, 51, 45, 978, DateTimeKind.Local).AddTicks(5999) });
 
             migrationBuilder.UpdateData(
                 table: "Role",
                 keyColumn: "Id",
                 keyValue: "1E6284BA-3365-4F58-9FF7-24ECC21B5095",
                 column: "ConcurrencyStamp",
-                value: "3e8dea32-2d32-4fcc-91b5-8c7339878907");
+                value: "656eb43c-872b-4730-b7c6-94c191ed87de");
 
             migrationBuilder.UpdateData(
                 table: "Role",
                 keyColumn: "Id",
                 keyValue: "1F990C39-A60D-4598-A7AC-1B33C5249897",
                 column: "ConcurrencyStamp",
-                value: "955ef492-e6b7-4eeb-b8c4-f39d4a3b364b");
+                value: "a3cc3559-6da3-4004-bae3-85931d477d91");
 
             migrationBuilder.UpdateData(
                 table: "Role",
                 keyColumn: "Id",
                 keyValue: "5CE205D4-FD33-4889-81FD-974E1D5DAA85",
                 column: "ConcurrencyStamp",
-                value: "f6d11b1f-8819-4f48-8265-4c705c94d1cb");
-
-            migrationBuilder.UpdateData(
-                table: "User",
-                keyColumn: "Id",
-                keyValue: "27FF60CB-AE2D-45E5-ACBB-1B7094D73B2D",
-                columns: new[] { "ConcurrencyStamp", "PasswordHash" },
-                values: new object[] { "3998a6ae-2f76-47ce-8759-21a9fd3fd6b8", "AQAAAAEAACcQAAAAEKR6zVsYL4rvs0tXSgqLH0wflyVFFm13mQsRpc0RKyaMnBxEWq7+PS/IKFN2rLOPXQ==" });
-
-            migrationBuilder.UpdateData(
-                table: "User",
-                keyColumn: "Id",
-                keyValue: "8238CBD2-3304-4346-BF20-00F897881458",
-                columns: new[] { "ConcurrencyStamp", "PasswordHash" },
-                values: new object[] { "f28723db-ca12-4cbd-b414-beb5fa5cfb14", "AQAAAAEAACcQAAAAEHe06Cp5w/OqrF2UA+C4Vxe7HoLh2WIc8tVvF0/zUA3VCBPvx10hDePGnh91T6TsCw==" });
-
-            migrationBuilder.UpdateData(
-                table: "User",
-                keyColumn: "Id",
-                keyValue: "C5D0CB6E-7575-4C82-A42C-9EBBC41220D1",
-                columns: new[] { "ConcurrencyStamp", "PasswordHash" },
-                values: new object[] { "6f548d7e-aaca-44a8-b00a-fa3d04f00713", "AQAAAAEAACcQAAAAEFkGLMzRyQ3fFLFXJep2MR7xgtRPAIrVVqkcj1tDE7NltC5xX4SNYqYQWLTS0Yzi3Q==" });
+                value: "bd7d86e0-a60c-48bd-afdf-6ad274b6c661");
 
             migrationBuilder.InsertData(
-                table: "UserRoles",
-                columns: new[] { "RoleId", "UserId" },
+                table: "User",
+                columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "FullName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { "1E6284BA-3365-4F58-9FF7-24ECC21B5095", "27FF60CB-AE2D-45E5-ACBB-1B7094D73B2D" },
-                    { "5CE205D4-FD33-4889-81FD-974E1D5DAA85", "C5D0CB6E-7575-4C82-A42C-9EBBC41220D1" },
-                    { "1F990C39-A60D-4598-A7AC-1B33C5249897", "8238CBD2-3304-4346-BF20-00F897881458" }
+                    { "27FF60CB-AE2D-45E5-ACBB-1B7094D73B2D", 0, "da6d9816-bb54-4047-90cf-893d3a5fb72d", "Admin@zemogablog.com", true, null, false, null, "ADMIN@ZEMOGABLOG.COM", "BLOGADMIN", "AQAAAAEAACcQAAAAEM6IrAHFvP8pQ/s63W/UkX3GmgXexuadJIVpcmxCsYsRWbTRHq2/3/++/kJhpOBKVw==", "XXXXXXXXXXXXX", true, "00000000-0000-0000-0000-000000000000", false, "blogadmin" },
+                    { "C5D0CB6E-7575-4C82-A42C-9EBBC41220D1", 0, "4300d70d-9074-45f5-a53e-a7d413a5cb9d", "writer@zemogablog.com", true, null, false, null, "WRITER@ZEMOGABLOG.COM", "BLOGWRITER", "AQAAAAEAACcQAAAAELkW50+/06k1tF3uWduutIiFtTbdTvPCEm6+HCwqR32cAgMBJICk3Ekb8CkcupO3Tw==", "XXXXXXXXXXXXX", true, "00000000-0000-0000-0000-000000000000", false, "blogwriter" },
+                    { "8238CBD2-3304-4346-BF20-00F897881458", 0, "1e5f9c18-ad0a-4e8f-956c-2c92007038ea", "editor@zemogablog.com", true, null, false, null, "EDITOR@ZEMOGABLOG.COM", "BLOGEDITOR", "AQAAAAEAACcQAAAAEMWThALWDUeX5RiSB0yICi9cyjEKuNkWgubdoYFrlNUABqnJ0k4nkISppyrskew3Wg==", "XXXXXXXXXXXXX", true, "00000000-0000-0000-0000-000000000000", false, "blogeditor" }
                 });
 
             migrationBuilder.CreateIndex(
@@ -211,19 +196,23 @@ namespace Zmg.Blog.Repository.Migrations
                 table: "User");
 
             migrationBuilder.DeleteData(
-                table: "UserRoles",
-                keyColumns: new[] { "RoleId", "UserId" },
-                keyValues: new object[] { "1E6284BA-3365-4F58-9FF7-24ECC21B5095", "27FF60CB-AE2D-45E5-ACBB-1B7094D73B2D" });
+                table: "User",
+                keyColumn: "Id",
+                keyValue: "27FF60CB-AE2D-45E5-ACBB-1B7094D73B2D");
 
             migrationBuilder.DeleteData(
-                table: "UserRoles",
-                keyColumns: new[] { "RoleId", "UserId" },
-                keyValues: new object[] { "1F990C39-A60D-4598-A7AC-1B33C5249897", "8238CBD2-3304-4346-BF20-00F897881458" });
+                table: "User",
+                keyColumn: "Id",
+                keyValue: "8238CBD2-3304-4346-BF20-00F897881458");
 
             migrationBuilder.DeleteData(
-                table: "UserRoles",
-                keyColumns: new[] { "RoleId", "UserId" },
-                keyValues: new object[] { "5CE205D4-FD33-4889-81FD-974E1D5DAA85", "C5D0CB6E-7575-4C82-A42C-9EBBC41220D1" });
+                table: "User",
+                keyColumn: "Id",
+                keyValue: "C5D0CB6E-7575-4C82-A42C-9EBBC41220D1");
+
+            migrationBuilder.DropColumn(
+                name: "FullName",
+                table: "User");
 
             migrationBuilder.AlterColumn<string>(
                 name: "UserName",
@@ -291,68 +280,57 @@ namespace Zmg.Blog.Repository.Migrations
                     table.PrimaryKey("PK_AspNetUsers", x => x.Id);
                 });
 
+            migrationBuilder.InsertData(
+                table: "AspNetUsers",
+                columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "FullName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
+                values: new object[,]
+                {
+                    { "27FF60CB-AE2D-45E5-ACBB-1B7094D73B2D", 0, "f3980879-e0c2-4a50-9cb7-3ae1e5100947", "Admin@zemogablog.com", true, null, false, null, "ADMIN@ZEMOGABLOG.COM", "BLOGADMIN", "AQAAAAEAACcQAAAAEBU8Qh1/EQoz6xqhb838EDWcdJiydK5e/Be0OUn0uL6INXmPthfADRgnpL19uPxsiw==", "XXXXXXXXXXXXX", true, "00000000-0000-0000-0000-000000000000", false, "blogadmin" },
+                    { "C5D0CB6E-7575-4C82-A42C-9EBBC41220D1", 0, "04a3fa0c-f4f8-4324-9404-22ea908efe46", "writer@zemogablog.com", true, null, false, null, "WRITER@ZEMOGABLOG.COM", "BLOGWRITER", "AQAAAAEAACcQAAAAECc6s53nxR+0jnUw/EAUrTvdzg/4q9Z7ejeGS/QK7RYqYbquJ1AFl42bOcRAbkuOfA==", "XXXXXXXXXXXXX", true, "00000000-0000-0000-0000-000000000000", false, "blogwriter" },
+                    { "8238CBD2-3304-4346-BF20-00F897881458", 0, "28459f90-f71a-4f5c-9f97-c1c2c6d3a12c", "editor@zemogablog.com", true, null, false, null, "EDITOR@ZEMOGABLOG.COM", "BLOGEDITOR", "AQAAAAEAACcQAAAAEFP7O7ot8CgnAP97LsBoFWDWlVcnNAUM8tXgWIniOyXHTSRq3Fqvme70BJrK5DLT8A==", "XXXXXXXXXXXXX", true, "00000000-0000-0000-0000-000000000000", false, "blogeditor" }
+                });
+
             migrationBuilder.UpdateData(
                 table: "Posts",
                 keyColumn: "id",
                 keyValue: 1,
                 columns: new[] { "created_at", "last_modified_at" },
-                values: new object[] { new DateTime(2021, 10, 24, 15, 12, 5, 476, DateTimeKind.Local).AddTicks(1948), new DateTime(2021, 10, 24, 15, 12, 5, 476, DateTimeKind.Local).AddTicks(8040) });
+                values: new object[] { new DateTime(2021, 10, 24, 16, 3, 53, 261, DateTimeKind.Local).AddTicks(1136), new DateTime(2021, 10, 24, 16, 3, 53, 261, DateTimeKind.Local).AddTicks(8933) });
 
             migrationBuilder.UpdateData(
                 table: "Posts",
                 keyColumn: "id",
                 keyValue: 2,
                 columns: new[] { "created_at", "last_modified_at" },
-                values: new object[] { new DateTime(2021, 10, 24, 15, 12, 5, 476, DateTimeKind.Local).AddTicks(8892), new DateTime(2021, 10, 24, 15, 12, 5, 476, DateTimeKind.Local).AddTicks(8896) });
+                values: new object[] { new DateTime(2021, 10, 24, 16, 3, 53, 261, DateTimeKind.Local).AddTicks(9704), new DateTime(2021, 10, 24, 16, 3, 53, 261, DateTimeKind.Local).AddTicks(9708) });
 
             migrationBuilder.UpdateData(
                 table: "Posts",
                 keyColumn: "id",
                 keyValue: 3,
                 columns: new[] { "created_at", "last_modified_at" },
-                values: new object[] { new DateTime(2021, 10, 24, 15, 12, 5, 476, DateTimeKind.Local).AddTicks(8898), new DateTime(2021, 10, 24, 15, 12, 5, 476, DateTimeKind.Local).AddTicks(8899) });
+                values: new object[] { new DateTime(2021, 10, 24, 16, 3, 53, 261, DateTimeKind.Local).AddTicks(9710), new DateTime(2021, 10, 24, 16, 3, 53, 261, DateTimeKind.Local).AddTicks(9711) });
 
             migrationBuilder.UpdateData(
                 table: "Role",
                 keyColumn: "Id",
                 keyValue: "1E6284BA-3365-4F58-9FF7-24ECC21B5095",
                 column: "ConcurrencyStamp",
-                value: "be4cecbb-0d37-41fb-bb5a-f2ed147b0b12");
+                value: "70f2b523-b07b-4ca0-a204-98b104be4f37");
 
             migrationBuilder.UpdateData(
                 table: "Role",
                 keyColumn: "Id",
                 keyValue: "1F990C39-A60D-4598-A7AC-1B33C5249897",
                 column: "ConcurrencyStamp",
-                value: "10859f0e-5b05-4381-a699-dc687b499681");
+                value: "f090721c-ebdd-4ac2-901e-3a78205bc446");
 
             migrationBuilder.UpdateData(
                 table: "Role",
                 keyColumn: "Id",
                 keyValue: "5CE205D4-FD33-4889-81FD-974E1D5DAA85",
                 column: "ConcurrencyStamp",
-                value: "b4863fa1-96a0-4b8b-b04e-de7f5d6b1b42");
-
-            migrationBuilder.UpdateData(
-                table: "User",
-                keyColumn: "Id",
-                keyValue: "27FF60CB-AE2D-45E5-ACBB-1B7094D73B2D",
-                columns: new[] { "ConcurrencyStamp", "PasswordHash" },
-                values: new object[] { "624cf276-3cb8-4c09-a81f-44c63fdb0e11", "AQAAAAEAACcQAAAAEMiNdfY1q3tIBP2S8FneLzg6YjNZ7FrPMrNvODHiWommLMNk1XrbJZ4O6M9uC8E11Q==" });
-
-            migrationBuilder.UpdateData(
-                table: "User",
-                keyColumn: "Id",
-                keyValue: "8238CBD2-3304-4346-BF20-00F897881458",
-                columns: new[] { "ConcurrencyStamp", "PasswordHash" },
-                values: new object[] { "cf4d9a09-50cc-4a3a-bbbc-c5dde2a44c17", "AQAAAAEAACcQAAAAEGaHAfZwCRSr6if6IFzA1TQEpmFcH5WVZwCOj341bifXpisM+zP38ooKkP9OKTz21Q==" });
-
-            migrationBuilder.UpdateData(
-                table: "User",
-                keyColumn: "Id",
-                keyValue: "C5D0CB6E-7575-4C82-A42C-9EBBC41220D1",
-                columns: new[] { "ConcurrencyStamp", "PasswordHash" },
-                values: new object[] { "b96dacda-603f-4844-bc9f-e066e1388f16", "AQAAAAEAACcQAAAAEF2+x+jmgihF28dMryHIAAWb3Iga5dl32MePfPJ82eIJPBtEoF1YFiI9ljcLXysU4g==" });
+                value: "9f929c82-92ef-4043-a9bf-d697dbeb88ec");
 
             migrationBuilder.CreateIndex(
                 name: "EmailIndex",

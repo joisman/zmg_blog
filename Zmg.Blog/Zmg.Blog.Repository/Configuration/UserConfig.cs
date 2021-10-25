@@ -7,14 +7,15 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Zmg.Blog.Repository.Helpers;
+using Zmg.Blog.Domain.Models;
 
 namespace Zmg.Blog.Repository.Configuration
 {
-    internal class UserConfig : IEntityTypeConfiguration<IdentityUser>
+    internal class UserConfig : IEntityTypeConfiguration<User>
     {
-        public void Configure(EntityTypeBuilder<IdentityUser> builder)
+        public void Configure(EntityTypeBuilder<User> builder)
         {
-            var admin = new IdentityUser
+            var admin = new User
             {
                 Id = Constants.ADMIN_ID,
                 UserName = "blogadmin",
@@ -28,7 +29,7 @@ namespace Zmg.Blog.Repository.Configuration
             };
             admin.PasswordHash = PassGenerate(admin);
 
-            var writer = new IdentityUser
+            var writer = new User
             {
                 Id = Constants.WRITER_ID,
                 UserName = "blogwriter",
@@ -43,7 +44,7 @@ namespace Zmg.Blog.Repository.Configuration
             writer.PasswordHash = PassGenerate(writer);
 
 
-            var editor = new IdentityUser
+            var editor = new User
             {
                 Id = Constants.EDITOR_ID,
                 UserName = "blogeditor",
@@ -62,9 +63,9 @@ namespace Zmg.Blog.Repository.Configuration
             builder.HasData(editor);
         }
 
-        public string PassGenerate(IdentityUser user)
+        public string PassGenerate(User user)
         {
-            var passHash = new PasswordHasher<IdentityUser>();
+            var passHash = new PasswordHasher<User>();
             return passHash.HashPassword(user, "password");
         }
 

@@ -10,8 +10,8 @@ using Zmg.Blog.Repository;
 namespace Zmg.Blog.Repository.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20211024203048_seed_roles")]
-    partial class seed_roles
+    [Migration("20211024210353_seed_users")]
+    partial class seed_users
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -51,21 +51,21 @@ namespace Zmg.Blog.Repository.Migrations
                         new
                         {
                             Id = "5CE205D4-FD33-4889-81FD-974E1D5DAA85",
-                            ConcurrencyStamp = "f6d11b1f-8819-4f48-8265-4c705c94d1cb",
+                            ConcurrencyStamp = "9f929c82-92ef-4043-a9bf-d697dbeb88ec",
                             Name = "Writer",
                             NormalizedName = "WRITER"
                         },
                         new
                         {
                             Id = "1F990C39-A60D-4598-A7AC-1B33C5249897",
-                            ConcurrencyStamp = "955ef492-e6b7-4eeb-b8c4-f39d4a3b364b",
+                            ConcurrencyStamp = "f090721c-ebdd-4ac2-901e-3a78205bc446",
                             Name = "Editor",
                             NormalizedName = "EDITOR"
                         },
                         new
                         {
                             Id = "1E6284BA-3365-4F58-9FF7-24ECC21B5095",
-                            ConcurrencyStamp = "3e8dea32-2d32-4fcc-91b5-8c7339878907",
+                            ConcurrencyStamp = "70f2b523-b07b-4ca0-a204-98b104be4f37",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });
@@ -104,12 +104,10 @@ namespace Zmg.Blog.Repository.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("ConcurrencyStamp")
-                        .IsConcurrencyToken()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Email")
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("bit");
@@ -121,12 +119,10 @@ namespace Zmg.Blog.Repository.Migrations
                         .HasColumnType("datetimeoffset");
 
                     b.Property<string>("NormalizedEmail")
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("NormalizedUserName")
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PasswordHash")
                         .HasColumnType("nvarchar(max)");
@@ -144,73 +140,11 @@ namespace Zmg.Blog.Repository.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("UserName")
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("NormalizedEmail")
-                        .HasDatabaseName("EmailIndex");
-
-                    b.HasIndex("NormalizedUserName")
-                        .IsUnique()
-                        .HasDatabaseName("UserNameIndex")
-                        .HasFilter("[NormalizedUserName] IS NOT NULL");
-
                     b.ToTable("User");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = "27FF60CB-AE2D-45E5-ACBB-1B7094D73B2D",
-                            AccessFailedCount = 0,
-                            ConcurrencyStamp = "3998a6ae-2f76-47ce-8759-21a9fd3fd6b8",
-                            Email = "Admin@zemogablog.com",
-                            EmailConfirmed = true,
-                            LockoutEnabled = false,
-                            NormalizedEmail = "ADMIN@ZEMOGABLOG.COM",
-                            NormalizedUserName = "BLOGADMIN",
-                            PasswordHash = "AQAAAAEAACcQAAAAEKR6zVsYL4rvs0tXSgqLH0wflyVFFm13mQsRpc0RKyaMnBxEWq7+PS/IKFN2rLOPXQ==",
-                            PhoneNumber = "XXXXXXXXXXXXX",
-                            PhoneNumberConfirmed = true,
-                            SecurityStamp = "00000000-0000-0000-0000-000000000000",
-                            TwoFactorEnabled = false,
-                            UserName = "blogadmin"
-                        },
-                        new
-                        {
-                            Id = "C5D0CB6E-7575-4C82-A42C-9EBBC41220D1",
-                            AccessFailedCount = 0,
-                            ConcurrencyStamp = "6f548d7e-aaca-44a8-b00a-fa3d04f00713",
-                            Email = "writer@zemogablog.com",
-                            EmailConfirmed = true,
-                            LockoutEnabled = false,
-                            NormalizedEmail = "WRITER@ZEMOGABLOG.COM",
-                            NormalizedUserName = "BLOGWRITER",
-                            PasswordHash = "AQAAAAEAACcQAAAAEFkGLMzRyQ3fFLFXJep2MR7xgtRPAIrVVqkcj1tDE7NltC5xX4SNYqYQWLTS0Yzi3Q==",
-                            PhoneNumber = "XXXXXXXXXXXXX",
-                            PhoneNumberConfirmed = true,
-                            SecurityStamp = "00000000-0000-0000-0000-000000000000",
-                            TwoFactorEnabled = false,
-                            UserName = "blogwriter"
-                        },
-                        new
-                        {
-                            Id = "8238CBD2-3304-4346-BF20-00F897881458",
-                            AccessFailedCount = 0,
-                            ConcurrencyStamp = "f28723db-ca12-4cbd-b414-beb5fa5cfb14",
-                            Email = "editor@zemogablog.com",
-                            EmailConfirmed = true,
-                            LockoutEnabled = false,
-                            NormalizedEmail = "EDITOR@ZEMOGABLOG.COM",
-                            NormalizedUserName = "BLOGEDITOR",
-                            PasswordHash = "AQAAAAEAACcQAAAAEHe06Cp5w/OqrF2UA+C4Vxe7HoLh2WIc8tVvF0/zUA3VCBPvx10hDePGnh91T6TsCw==",
-                            PhoneNumber = "XXXXXXXXXXXXX",
-                            PhoneNumberConfirmed = true,
-                            SecurityStamp = "00000000-0000-0000-0000-000000000000",
-                            TwoFactorEnabled = false,
-                            UserName = "blogeditor"
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
@@ -351,8 +285,8 @@ namespace Zmg.Blog.Repository.Migrations
                         {
                             id = 1,
                             content = "Test 1",
-                            created_at = new DateTime(2021, 10, 24, 15, 30, 48, 151, DateTimeKind.Local).AddTicks(6122),
-                            last_modified_at = new DateTime(2021, 10, 24, 15, 30, 48, 152, DateTimeKind.Local).AddTicks(2663),
+                            created_at = new DateTime(2021, 10, 24, 16, 3, 53, 261, DateTimeKind.Local).AddTicks(1136),
+                            last_modified_at = new DateTime(2021, 10, 24, 16, 3, 53, 261, DateTimeKind.Local).AddTicks(8933),
                             status = 1,
                             title = "First post",
                             username = "jdoe"
@@ -361,8 +295,8 @@ namespace Zmg.Blog.Repository.Migrations
                         {
                             id = 2,
                             content = "Test 2",
-                            created_at = new DateTime(2021, 10, 24, 15, 30, 48, 152, DateTimeKind.Local).AddTicks(3456),
-                            last_modified_at = new DateTime(2021, 10, 24, 15, 30, 48, 152, DateTimeKind.Local).AddTicks(3459),
+                            created_at = new DateTime(2021, 10, 24, 16, 3, 53, 261, DateTimeKind.Local).AddTicks(9704),
+                            last_modified_at = new DateTime(2021, 10, 24, 16, 3, 53, 261, DateTimeKind.Local).AddTicks(9708),
                             status = 2,
                             title = "Second post",
                             username = "jdoe"
@@ -371,8 +305,8 @@ namespace Zmg.Blog.Repository.Migrations
                         {
                             id = 3,
                             content = "Test 3",
-                            created_at = new DateTime(2021, 10, 24, 15, 30, 48, 152, DateTimeKind.Local).AddTicks(3461),
-                            last_modified_at = new DateTime(2021, 10, 24, 15, 30, 48, 152, DateTimeKind.Local).AddTicks(3462),
+                            created_at = new DateTime(2021, 10, 24, 16, 3, 53, 261, DateTimeKind.Local).AddTicks(9710),
+                            last_modified_at = new DateTime(2021, 10, 24, 16, 3, 53, 261, DateTimeKind.Local).AddTicks(9711),
                             status = 1,
                             title = "Third post",
                             username = "jdoe"
@@ -409,6 +343,127 @@ namespace Zmg.Blog.Repository.Migrations
                     b.ToTable("Comments");
                 });
 
+            modelBuilder.Entity("Zmg.Blog.Domain.Models.User", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("AccessFailedCount")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .IsConcurrencyToken()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Email")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<bool>("EmailConfirmed")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("FullName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("LockoutEnabled")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTimeOffset?>("LockoutEnd")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<string>("NormalizedEmail")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<string>("NormalizedUserName")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<string>("PasswordHash")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PhoneNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("PhoneNumberConfirmed")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("SecurityStamp")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("TwoFactorEnabled")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("UserName")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("NormalizedEmail")
+                        .HasDatabaseName("EmailIndex");
+
+                    b.HasIndex("NormalizedUserName")
+                        .IsUnique()
+                        .HasDatabaseName("UserNameIndex")
+                        .HasFilter("[NormalizedUserName] IS NOT NULL");
+
+                    b.ToTable("AspNetUsers");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "27FF60CB-AE2D-45E5-ACBB-1B7094D73B2D",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "f3980879-e0c2-4a50-9cb7-3ae1e5100947",
+                            Email = "Admin@zemogablog.com",
+                            EmailConfirmed = true,
+                            LockoutEnabled = false,
+                            NormalizedEmail = "ADMIN@ZEMOGABLOG.COM",
+                            NormalizedUserName = "BLOGADMIN",
+                            PasswordHash = "AQAAAAEAACcQAAAAEBU8Qh1/EQoz6xqhb838EDWcdJiydK5e/Be0OUn0uL6INXmPthfADRgnpL19uPxsiw==",
+                            PhoneNumber = "XXXXXXXXXXXXX",
+                            PhoneNumberConfirmed = true,
+                            SecurityStamp = "00000000-0000-0000-0000-000000000000",
+                            TwoFactorEnabled = false,
+                            UserName = "blogadmin"
+                        },
+                        new
+                        {
+                            Id = "C5D0CB6E-7575-4C82-A42C-9EBBC41220D1",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "04a3fa0c-f4f8-4324-9404-22ea908efe46",
+                            Email = "writer@zemogablog.com",
+                            EmailConfirmed = true,
+                            LockoutEnabled = false,
+                            NormalizedEmail = "WRITER@ZEMOGABLOG.COM",
+                            NormalizedUserName = "BLOGWRITER",
+                            PasswordHash = "AQAAAAEAACcQAAAAECc6s53nxR+0jnUw/EAUrTvdzg/4q9Z7ejeGS/QK7RYqYbquJ1AFl42bOcRAbkuOfA==",
+                            PhoneNumber = "XXXXXXXXXXXXX",
+                            PhoneNumberConfirmed = true,
+                            SecurityStamp = "00000000-0000-0000-0000-000000000000",
+                            TwoFactorEnabled = false,
+                            UserName = "blogwriter"
+                        },
+                        new
+                        {
+                            Id = "8238CBD2-3304-4346-BF20-00F897881458",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "28459f90-f71a-4f5c-9f97-c1c2c6d3a12c",
+                            Email = "editor@zemogablog.com",
+                            EmailConfirmed = true,
+                            LockoutEnabled = false,
+                            NormalizedEmail = "EDITOR@ZEMOGABLOG.COM",
+                            NormalizedUserName = "BLOGEDITOR",
+                            PasswordHash = "AQAAAAEAACcQAAAAEFP7O7ot8CgnAP97LsBoFWDWlVcnNAUM8tXgWIniOyXHTSRq3Fqvme70BJrK5DLT8A==",
+                            PhoneNumber = "XXXXXXXXXXXXX",
+                            PhoneNumberConfirmed = true,
+                            SecurityStamp = "00000000-0000-0000-0000-000000000000",
+                            TwoFactorEnabled = false,
+                            UserName = "blogeditor"
+                        });
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -420,7 +475,7 @@ namespace Zmg.Blog.Repository.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
                 {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
+                    b.HasOne("Zmg.Blog.Domain.Models.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -429,7 +484,7 @@ namespace Zmg.Blog.Repository.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
+                    b.HasOne("Zmg.Blog.Domain.Models.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -444,7 +499,7 @@ namespace Zmg.Blog.Repository.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
+                    b.HasOne("Zmg.Blog.Domain.Models.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -453,7 +508,7 @@ namespace Zmg.Blog.Repository.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
                 {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
+                    b.HasOne("Zmg.Blog.Domain.Models.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)

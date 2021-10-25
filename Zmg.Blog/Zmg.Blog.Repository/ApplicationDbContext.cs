@@ -12,7 +12,7 @@ using Zmg.Blog.Repository.Helpers;
 
 namespace Zmg.Blog.Repository
 {
-    public class ApplicationDbContext : IdentityDbContext<IdentityUser>
+    public class ApplicationDbContext : IdentityDbContext<User, Role, string>
     {
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
@@ -24,12 +24,12 @@ namespace Zmg.Blog.Repository
             base.OnModelCreating(builder);
 
             //builder.HasDefaultSchema("Identity");
-            builder.Entity<IdentityUser>(entity =>
+            builder.Entity<User>(entity =>
             {
                 entity.ToTable(name: "User");
             });
 
-            builder.Entity<IdentityRole>(entity =>
+            builder.Entity<Role>(entity =>
             {
                 entity.ToTable(name: "Role");
                 entity.HasData(
@@ -39,7 +39,6 @@ namespace Zmg.Blog.Repository
                     new IdentityRole { Id = Constants.ADMIN_ROLE_ID, Name = "Admin", NormalizedName = "ADMIN" }
                     );
             });
-            builder.ApplyConfiguration(new UserConfig());
 
 
             builder.Entity<IdentityUserRole<string>>(entity =>
@@ -71,6 +70,7 @@ namespace Zmg.Blog.Repository
                 );
 
             // Seed users and roles.
+            builder.ApplyConfiguration(new UserConfig());
             builder.ApplyConfiguration(new UserWithRolesConfig());
         }
 

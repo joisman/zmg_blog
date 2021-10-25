@@ -3,6 +3,7 @@ using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using Zmg.Blog.Repository.IRepositories;
@@ -24,7 +25,8 @@ namespace Zmg.Blog.Repository.Repositories
 
         public virtual async Task<bool> Add(T entity)
         {
-            await dbSet.AddAsync(entity);
+            dbSet.Add(entity);
+            await context.SaveChangesAsync();
             return true;
         }
 
@@ -46,9 +48,12 @@ namespace Zmg.Blog.Repository.Repositories
 
         public virtual async Task<bool> Update(T entity)
         {
-            throw new NotImplementedException();
+            return true;
         }
 
-      
+        public async Task<IEnumerable<T>> Find(Expression<Func<T, bool>> predicate)
+        {
+            return await dbSet.Where(predicate).ToListAsync();
+        }
     }
 }

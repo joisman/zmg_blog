@@ -7,6 +7,7 @@ using Zmg.Blog.BL.DTO;
 using Zmg.Blog.BL.Interfaces;
 using Zmg.Blog.Domain.Interfaces;
 using Zmg.Blog.Domain.Models;
+using Zmg.Blog.Repository.Enums;
 
 namespace Zmg.Blog.BL
 {
@@ -19,9 +20,16 @@ namespace Zmg.Blog.BL
             _unitOfWork = unitOfWork;
         }
 
-        public Task CreateAsync(Post post)
+        public async Task AddCommentAsync(Post post, string comment, string username)
         {
-            throw new NotImplementedException();
+            await _unitOfWork.Posts.AddCommentAsync(post, comment, username);
+        }
+
+
+        public async Task CreateAsync(Post post)
+        {
+            await _unitOfWork.Posts.Add(post);
+            await _unitOfWork.CompleteAsync();
         }
 
         public async Task<List<Post>> GetAllPostsAsync()
@@ -37,19 +45,31 @@ namespace Zmg.Blog.BL
             }
         }
 
-        public Task<PostDTO> GetPostByIdAsync(Post post)
+        public async Task<Post> GetPostByIdAsync(int id)
+        {
+            return await _unitOfWork.Posts.GetById(id);
+        }
+
+        public async Task<List<Post>> GetPostsByUsernameAsync(string username)
+        {
+            return await _unitOfWork.Posts.GetPostsByUsername(username);
+        }
+
+        public Task<List<PostComment>> GetPostCommentsAsync(int postId)
         {
             throw new NotImplementedException();
         }
 
-        public Task<List<PostDTO>> GetPostByUsername(Post post)
+        public async Task UpdateAsync(Post post)
         {
-            throw new NotImplementedException();
+            await _unitOfWork.Posts.Update(post);
+            await _unitOfWork.CompleteAsync();
         }
 
-        public Task UpdateAsync(Post post)
+        public async Task<List<Post>> GetPostsByStatusAsync(PostStatus status)
         {
-            throw new NotImplementedException();
+            var posts = await _unitOfWork.Posts.Find(x => x.status == (int)status);
+            return posts.ToList();
         }
     }
 }

@@ -20,7 +20,10 @@ namespace Zmg.Blog.Domain.Models
         public DateTime created_at { get; set; }
         public int status { get; set; }
         public DateTime last_modified_at { get; set; }
+        public string reject_comments { get; set; }
         [Required]
         public string username { get; set; }
+
+        public List<PostComment> Comments { get; set; }
     }
 }

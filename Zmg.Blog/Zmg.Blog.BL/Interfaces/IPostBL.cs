@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Zmg.Blog.BL.DTO;
 using Zmg.Blog.Domain.Models;
+using Zmg.Blog.Repository.Enums;
 
 namespace Zmg.Blog.BL.Interfaces
 {
@@ -13,7 +14,11 @@ namespace Zmg.Blog.BL.Interfaces
         Task CreateAsync(Post post);
         Task UpdateAsync(Post post);
         Task<List<Post>> GetAllPostsAsync();
-        Task<PostDTO> GetPostByIdAsync(Post post);
-        Task<List<PostDTO>> GetPostByUsername(Post post);
+        Task<List<Post>> GetPostsByStatusAsync(PostStatus status);
+        
+        Task<Post> GetPostByIdAsync(int id);
+        Task<List<Post>> GetPostsByUsernameAsync(string username);
+        Task AddCommentAsync(Post post, string comment, string username);
+        Task<List<PostComment>> GetPostCommentsAsync(int postId);
     }
 }

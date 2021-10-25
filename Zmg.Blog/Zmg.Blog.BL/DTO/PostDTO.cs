@@ -10,12 +10,10 @@ namespace Zmg.Blog.BL.DTO
 {
     public class PostDTO
     {
-        [Required]
         public string Title { get; set; }
-        [Required]
         public string Content { get; set; }
         public int status { get; set; }
-        [Required]
+        public string reject_comments { get; set; }
         public string username { get; set; }
     }
 }

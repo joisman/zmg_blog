@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Zmg.Blog.Repository;
 
 namespace Zmg.Blog.Repository.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20211024231320_add_comment_collection_to_post")]
+    partial class add_comment_collection_to_post
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -161,9 +163,6 @@ namespace Zmg.Blog.Repository.Migrations
                     b.Property<DateTime>("last_modified_at")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("reject_comments")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<int>("status")
                         .HasColumnType("int");
 
@@ -184,8 +183,8 @@ namespace Zmg.Blog.Repository.Migrations
                         {
                             id = 1,
                             content = "Test 1",
-                            created_at = new DateTime(2021, 10, 24, 20, 20, 34, 208, DateTimeKind.Local).AddTicks(2039),
-                            last_modified_at = new DateTime(2021, 10, 24, 20, 20, 34, 208, DateTimeKind.Local).AddTicks(8458),
+                            created_at = new DateTime(2021, 10, 24, 18, 13, 19, 473, DateTimeKind.Local).AddTicks(9195),
+                            last_modified_at = new DateTime(2021, 10, 24, 18, 13, 19, 474, DateTimeKind.Local).AddTicks(8121),
                             status = 1,
                             title = "First post",
                             username = "jdoe"
@@ -194,8 +193,8 @@ namespace Zmg.Blog.Repository.Migrations
                         {
                             id = 2,
                             content = "Test 2",
-                            created_at = new DateTime(2021, 10, 24, 20, 20, 34, 208, DateTimeKind.Local).AddTicks(9205),
-                            last_modified_at = new DateTime(2021, 10, 24, 20, 20, 34, 208, DateTimeKind.Local).AddTicks(9210),
+                            created_at = new DateTime(2021, 10, 24, 18, 13, 19, 474, DateTimeKind.Local).AddTicks(9448),
+                            last_modified_at = new DateTime(2021, 10, 24, 18, 13, 19, 474, DateTimeKind.Local).AddTicks(9455),
                             status = 2,
                             title = "Second post",
                             username = "jdoe"
@@ -204,8 +203,8 @@ namespace Zmg.Blog.Repository.Migrations
                         {
                             id = 3,
                             content = "Test 3",
-                            created_at = new DateTime(2021, 10, 24, 20, 20, 34, 208, DateTimeKind.Local).AddTicks(9212),
-                            last_modified_at = new DateTime(2021, 10, 24, 20, 20, 34, 208, DateTimeKind.Local).AddTicks(9212),
+                            created_at = new DateTime(2021, 10, 24, 18, 13, 19, 474, DateTimeKind.Local).AddTicks(9458),
+                            last_modified_at = new DateTime(2021, 10, 24, 18, 13, 19, 474, DateTimeKind.Local).AddTicks(9460),
                             status = 1,
                             title = "Third post",
                             username = "jdoe"
@@ -272,21 +271,21 @@ namespace Zmg.Blog.Repository.Migrations
                         new
                         {
                             Id = "5CE205D4-FD33-4889-81FD-974E1D5DAA85",
-                            ConcurrencyStamp = "74ec5aa7-e69f-4f09-98d9-03e3d0ca4444",
+                            ConcurrencyStamp = "168d4f10-5fce-4418-b72f-5e24f6ad5774",
                             Name = "Writer",
                             NormalizedName = "WRITER"
                         },
                         new
                         {
                             Id = "1F990C39-A60D-4598-A7AC-1B33C5249897",
-                            ConcurrencyStamp = "5077c4fb-3d3c-4c38-b786-4a512170a56f",
+                            ConcurrencyStamp = "0a3db40e-eb8a-42ad-b796-980aed76150d",
                             Name = "Editor",
                             NormalizedName = "EDITOR"
                         },
                         new
                         {
                             Id = "1E6284BA-3365-4F58-9FF7-24ECC21B5095",
-                            ConcurrencyStamp = "9469fa6d-6f50-4aae-b5fb-8c0d2d1985ca",
+                            ConcurrencyStamp = "ebbac7bf-130f-4052-af1f-a1c510220e1a",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });
@@ -364,13 +363,13 @@ namespace Zmg.Blog.Repository.Migrations
                         {
                             Id = "27FF60CB-AE2D-45E5-ACBB-1B7094D73B2D",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "f8a0e975-539d-4049-9a18-3d7cb5de7725",
+                            ConcurrencyStamp = "db11abc9-58f4-4b67-884d-3025450a7627",
                             Email = "Admin@zemogablog.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@ZEMOGABLOG.COM",
                             NormalizedUserName = "BLOGADMIN",
-                            PasswordHash = "AQAAAAEAACcQAAAAEA9Pz0Duk7Smf4IVcyTH+S9bY6+zIwuhvF52/byY3Jy24kELurGTOScpofnyiy1neQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEJHkTsEE+UUho+lTYCO3Ab1SInZFELLA3BdLnRjcxbnGGfqeO81wCutnfJfx00zCJg==",
                             PhoneNumber = "XXXXXXXXXXXXX",
                             PhoneNumberConfirmed = true,
                             SecurityStamp = "00000000-0000-0000-0000-000000000000",
@@ -381,13 +380,13 @@ namespace Zmg.Blog.Repository.Migrations
                         {
                             Id = "C5D0CB6E-7575-4C82-A42C-9EBBC41220D1",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "27f61c73-3994-46f7-89b1-fafb322ca3db",
+                            ConcurrencyStamp = "b9dd0af6-b0d1-4890-9431-31c3a7ec088a",
                             Email = "writer@zemogablog.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "WRITER@ZEMOGABLOG.COM",
                             NormalizedUserName = "BLOGWRITER",
-                            PasswordHash = "AQAAAAEAACcQAAAAELv8ZHObCWj5s4HQSXUffYlV3pAUbIpTh3bjRaxFGr3OLND1fs+YC8vh5Y6zBho5Dw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEDxwMjMmnHbi4KGJsnp6Hm1LyK+g6UpENdd7QX6f1N26FGQu5Bu88h69CQKBlaNsNg==",
                             PhoneNumber = "XXXXXXXXXXXXX",
                             PhoneNumberConfirmed = true,
                             SecurityStamp = "00000000-0000-0000-0000-000000000000",
@@ -398,13 +397,13 @@ namespace Zmg.Blog.Repository.Migrations
                         {
                             Id = "8238CBD2-3304-4346-BF20-00F897881458",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "65c19bd1-0d70-4e08-bac6-0026d10a3ca8",
+                            ConcurrencyStamp = "c22f4b3a-1737-4751-98ad-bb1fab38972e",
                             Email = "editor@zemogablog.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "EDITOR@ZEMOGABLOG.COM",
                             NormalizedUserName = "BLOGEDITOR",
-                            PasswordHash = "AQAAAAEAACcQAAAAEL0kzsGioXOBnMnGwyqj102CJ5krsQvCoLe1c3nMQKwvdbxlhvgQGLE5qHRXdZGfdA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEF7XsRlhgZ7ajX2hIu0xa9bDqqdPbxwWgGOqylaztjRxErfw02F1/72BM3bJ4zEEjg==",
                             PhoneNumber = "XXXXXXXXXXXXX",
                             PhoneNumberConfirmed = true,
                             SecurityStamp = "00000000-0000-0000-0000-000000000000",

@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Zmg.Blog.Repository;
 
 namespace Zmg.Blog.Repository.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20211024225146_create_roles")]
+    partial class create_roles
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -161,9 +163,6 @@ namespace Zmg.Blog.Repository.Migrations
                     b.Property<DateTime>("last_modified_at")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("reject_comments")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<int>("status")
                         .HasColumnType("int");
 
@@ -184,8 +183,8 @@ namespace Zmg.Blog.Repository.Migrations
                         {
                             id = 1,
                             content = "Test 1",
-                            created_at = new DateTime(2021, 10, 24, 20, 20, 34, 208, DateTimeKind.Local).AddTicks(2039),
-                            last_modified_at = new DateTime(2021, 10, 24, 20, 20, 34, 208, DateTimeKind.Local).AddTicks(8458),
+                            created_at = new DateTime(2021, 10, 24, 17, 51, 45, 977, DateTimeKind.Local).AddTicks(8423),
+                            last_modified_at = new DateTime(2021, 10, 24, 17, 51, 45, 978, DateTimeKind.Local).AddTicks(5204),
                             status = 1,
                             title = "First post",
                             username = "jdoe"
@@ -194,8 +193,8 @@ namespace Zmg.Blog.Repository.Migrations
                         {
                             id = 2,
                             content = "Test 2",
-                            created_at = new DateTime(2021, 10, 24, 20, 20, 34, 208, DateTimeKind.Local).AddTicks(9205),
-                            last_modified_at = new DateTime(2021, 10, 24, 20, 20, 34, 208, DateTimeKind.Local).AddTicks(9210),
+                            created_at = new DateTime(2021, 10, 24, 17, 51, 45, 978, DateTimeKind.Local).AddTicks(5993),
+                            last_modified_at = new DateTime(2021, 10, 24, 17, 51, 45, 978, DateTimeKind.Local).AddTicks(5997),
                             status = 2,
                             title = "Second post",
                             username = "jdoe"
@@ -204,8 +203,8 @@ namespace Zmg.Blog.Repository.Migrations
                         {
                             id = 3,
                             content = "Test 3",
-                            created_at = new DateTime(2021, 10, 24, 20, 20, 34, 208, DateTimeKind.Local).AddTicks(9212),
-                            last_modified_at = new DateTime(2021, 10, 24, 20, 20, 34, 208, DateTimeKind.Local).AddTicks(9212),
+                            created_at = new DateTime(2021, 10, 24, 17, 51, 45, 978, DateTimeKind.Local).AddTicks(5999),
+                            last_modified_at = new DateTime(2021, 10, 24, 17, 51, 45, 978, DateTimeKind.Local).AddTicks(5999),
                             status = 1,
                             title = "Third post",
                             username = "jdoe"
@@ -219,7 +218,7 @@ namespace Zmg.Blog.Repository.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("Postid")
+                    b.Property<int?>("Postid")
                         .HasColumnType("int");
 
                     b.Property<string>("content")
@@ -272,21 +271,21 @@ namespace Zmg.Blog.Repository.Migrations
                         new
                         {
                             Id = "5CE205D4-FD33-4889-81FD-974E1D5DAA85",
-                            ConcurrencyStamp = "74ec5aa7-e69f-4f09-98d9-03e3d0ca4444",
+                            ConcurrencyStamp = "bd7d86e0-a60c-48bd-afdf-6ad274b6c661",
                             Name = "Writer",
                             NormalizedName = "WRITER"
                         },
                         new
                         {
                             Id = "1F990C39-A60D-4598-A7AC-1B33C5249897",
-                            ConcurrencyStamp = "5077c4fb-3d3c-4c38-b786-4a512170a56f",
+                            ConcurrencyStamp = "a3cc3559-6da3-4004-bae3-85931d477d91",
                             Name = "Editor",
                             NormalizedName = "EDITOR"
                         },
                         new
                         {
                             Id = "1E6284BA-3365-4F58-9FF7-24ECC21B5095",
-                            ConcurrencyStamp = "9469fa6d-6f50-4aae-b5fb-8c0d2d1985ca",
+                            ConcurrencyStamp = "656eb43c-872b-4730-b7c6-94c191ed87de",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });
@@ -364,13 +363,13 @@ namespace Zmg.Blog.Repository.Migrations
                         {
                             Id = "27FF60CB-AE2D-45E5-ACBB-1B7094D73B2D",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "f8a0e975-539d-4049-9a18-3d7cb5de7725",
+                            ConcurrencyStamp = "da6d9816-bb54-4047-90cf-893d3a5fb72d",
                             Email = "Admin@zemogablog.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@ZEMOGABLOG.COM",
                             NormalizedUserName = "BLOGADMIN",
-                            PasswordHash = "AQAAAAEAACcQAAAAEA9Pz0Duk7Smf4IVcyTH+S9bY6+zIwuhvF52/byY3Jy24kELurGTOScpofnyiy1neQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEM6IrAHFvP8pQ/s63W/UkX3GmgXexuadJIVpcmxCsYsRWbTRHq2/3/++/kJhpOBKVw==",
                             PhoneNumber = "XXXXXXXXXXXXX",
                             PhoneNumberConfirmed = true,
                             SecurityStamp = "00000000-0000-0000-0000-000000000000",
@@ -381,13 +380,13 @@ namespace Zmg.Blog.Repository.Migrations
                         {
                             Id = "C5D0CB6E-7575-4C82-A42C-9EBBC41220D1",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "27f61c73-3994-46f7-89b1-fafb322ca3db",
+                            ConcurrencyStamp = "4300d70d-9074-45f5-a53e-a7d413a5cb9d",
                             Email = "writer@zemogablog.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "WRITER@ZEMOGABLOG.COM",
                             NormalizedUserName = "BLOGWRITER",
-                            PasswordHash = "AQAAAAEAACcQAAAAELv8ZHObCWj5s4HQSXUffYlV3pAUbIpTh3bjRaxFGr3OLND1fs+YC8vh5Y6zBho5Dw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAELkW50+/06k1tF3uWduutIiFtTbdTvPCEm6+HCwqR32cAgMBJICk3Ekb8CkcupO3Tw==",
                             PhoneNumber = "XXXXXXXXXXXXX",
                             PhoneNumberConfirmed = true,
                             SecurityStamp = "00000000-0000-0000-0000-000000000000",
@@ -398,13 +397,13 @@ namespace Zmg.Blog.Repository.Migrations
                         {
                             Id = "8238CBD2-3304-4346-BF20-00F897881458",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "65c19bd1-0d70-4e08-bac6-0026d10a3ca8",
+                            ConcurrencyStamp = "1e5f9c18-ad0a-4e8f-956c-2c92007038ea",
                             Email = "editor@zemogablog.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "EDITOR@ZEMOGABLOG.COM",
                             NormalizedUserName = "BLOGEDITOR",
-                            PasswordHash = "AQAAAAEAACcQAAAAEL0kzsGioXOBnMnGwyqj102CJ5krsQvCoLe1c3nMQKwvdbxlhvgQGLE5qHRXdZGfdA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEMWThALWDUeX5RiSB0yICi9cyjEKuNkWgubdoYFrlNUABqnJ0k4nkISppyrskew3Wg==",
                             PhoneNumber = "XXXXXXXXXXXXX",
                             PhoneNumberConfirmed = true,
                             SecurityStamp = "00000000-0000-0000-0000-000000000000",
@@ -467,17 +466,10 @@ namespace Zmg.Blog.Repository.Migrations
             modelBuilder.Entity("Zmg.Blog.Domain.Models.PostComment", b =>
                 {
                     b.HasOne("Zmg.Blog.Domain.Models.Post", "Post")
-                        .WithMany("Comments")
-                        .HasForeignKey("Postid")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .WithMany()
+                        .HasForeignKey("Postid");
 
                     b.Navigation("Post");
-                });
-
-            modelBuilder.Entity("Zmg.Blog.Domain.Models.Post", b =>
-                {
-                    b.Navigation("Comments");
                 });
 #pragma warning restore 612, 618
         }

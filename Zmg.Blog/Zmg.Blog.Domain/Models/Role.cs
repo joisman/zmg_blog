@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Zmg.Blog.Domain.Models
 {
-    public class Role : IdentityRole<Guid>
+    public class Role : IdentityRole
     {
     }
 }

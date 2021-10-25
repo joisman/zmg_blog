@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Zmg.Blog.Domain.Interfaces;
 using Zmg.Blog.Domain.Models;
+using Zmg.Blog.Repository.Enums;
 
 namespace Zmg.Blog.Repository.Repositories
 {
@@ -33,8 +34,8 @@ namespace Zmg.Blog.Repository.Repositories
         {
             try
             {
-                var existingPost = await dbSet.Where(x => x.id == entity.id)
-                                                    .FirstOrDefaultAsync();
+                var existingPost = await dbSet.FirstOrDefaultAsync(x => x.id == entity.id);
+
 
                 if (existingPost == null)
                     return await Add(entity);
@@ -43,6 +44,7 @@ namespace Zmg.Blog.Repository.Repositories
                 existingPost.content = entity.content;
                 existingPost.last_modified_at = DateTime.Now;
                 existingPost.status = entity.status;
+                existingPost.reject_comments = entity.status == (int)PostStatus.Rejected ? entity.reject_comments : null;
 
                 return true;
             }
@@ -73,7 +75,46 @@ namespace Zmg.Blog.Repository.Repositories
             }
         }
 
-        public Task<List<Post>> GetPostsByUsername(string username)
+        public async Task<List<Post>> GetPostsByUsername(string username)
+        {
+            try
+            {
+                return await dbSet.Where(x => x.username == username).ToListAsync();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "{Repo} All function error", typeof(PostRepository));
+                return new List<Post>();
+            }
+        }
+
+        public async Task AddCommentAsync(Post post, string content, string username)
+        {
+            try
+            {
+                var existingPost = await dbSet.FirstOrDefaultAsync(x => x.id == post.id);
+
+                if (existingPost == null)
+                    throw new Exception("Post not found");
+
+
+                PostComment comment = new PostComment();
+                comment.username = username;
+                comment.created_at = DateTime.Now;
+                comment.last_modified_at = DateTime.Now;
+                comment.content = content;
+
+                existingPost.Comments = new List<PostComment>();
+                existingPost.Comments.Add(comment);
+                await context.SaveChangesAsync();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "{Repo} Add Comment function error", typeof(PostRepository));
+            }
+        }
+
+        public async Task<List<PostComment>> GetPostCommentsByIdAsync(int id)
         {
             throw new NotImplementedException();
         }

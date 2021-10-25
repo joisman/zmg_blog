@@ -11,5 +11,7 @@ namespace Zmg.Blog.Domain.Interfaces
     public interface IPostRepository : IGenericRepository<Post>
     {
         Task<List<Post>> GetPostsByUsername(string username);
+        Task AddCommentAsync(Post post, string comment, string username);
+        Task<List<PostComment>> GetPostCommentsByIdAsync(int id);
     }
 }
