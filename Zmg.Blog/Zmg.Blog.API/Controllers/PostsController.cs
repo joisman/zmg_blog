@@ -33,6 +33,10 @@ namespace Zmg.Blog.API.Controllers
         }
 
         // GET: api/<PostController>
+        /// <summary>
+        /// Get the posts depending on the current user role.
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         [AllowAnonymous]
         public async Task<IEnumerable<Post>> Get()
@@ -69,6 +73,11 @@ namespace Zmg.Blog.API.Controllers
         }
 
 
+        /// <summary>
+        /// Creates a new post
+        /// </summary>
+        /// <param name="postDTO"></param>
+        /// <returns></returns>
         [HttpPost]
         [Authorize(Roles = "Writer")]
         public async Task<IActionResult> Post([FromBody] PostDTO postDTO)
@@ -90,6 +99,12 @@ namespace Zmg.Blog.API.Controllers
 
         }
 
+        /// <summary>
+        /// Updates a post.
+        /// </summary>
+        /// <param name="id">Post id</param>
+        /// <param name="postDTO">JSON object with the data will be updated.</param>
+        /// <returns></returns>
         [HttpPut("{id}")]
         [Authorize(Roles = "Writer")]
         public async Task<IActionResult> Put(int id, [FromBody] PostDTO postDTO)
@@ -115,6 +130,11 @@ namespace Zmg.Blog.API.Controllers
 
         }
 
+        /// <summary>
+        /// Submits a post.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpPut]
         [Route("{id}/submit")]
         [Authorize(Roles = "Writer")]
@@ -137,6 +157,11 @@ namespace Zmg.Blog.API.Controllers
         }
 
 
+        /// <summary>
+        /// Approves the selected post.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpPut]
         [Route("{id}/approve")]
         [Authorize(Roles = "Editor")]
@@ -155,6 +180,12 @@ namespace Zmg.Blog.API.Controllers
             return Ok(new { success = true, message = "Post approved successfully!" });
         }
 
+        /// <summary>
+        /// Rejects a post.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="postDTO"></param>
+        /// <returns></returns>
         [HttpPut]
         [Route("{id}/reject")]
         [Authorize(Roles = "Editor")]
@@ -178,6 +209,12 @@ namespace Zmg.Blog.API.Controllers
         }
 
 
+        /// <summary>
+        /// Creates a comment for the selected post.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="content"></param>
+        /// <returns></returns>
         [HttpPost]
         [Route("{id}/comment")]
         public async Task<IActionResult> PostComment(int id, [FromBody] string content)
@@ -201,6 +238,11 @@ namespace Zmg.Blog.API.Controllers
             }
         }
 
+        /// <summary>
+        /// Retrieves all the post comments
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpGet]
         [Route("{id}/comment")]
         [AllowAnonymous]
@@ -230,10 +272,6 @@ namespace Zmg.Blog.API.Controllers
             }
         }
 
-        // DELETE api/<PostController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
+      
     }
 }

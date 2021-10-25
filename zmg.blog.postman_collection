@@ -1,0 +1,297 @@
+{
+	"info": {
+		"_postman_id": "0fce5e5f-b253-45e8-b5b7-282d274a0316",
+		"name": "Zmg Blog",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);\r",
+									"pm.environment.set(\"token\", jsonData.token);\r",
+									"pm.environment.set(\"serverUrl\", \"localhost:44341\");"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"username\": \"blogeditor\",\r\n  \"password\": \"password\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:44341/api/login",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44341",
+							"path": [
+								"api",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Posts",
+			"item": [
+				{
+					"name": "Add",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Title\": \"postman post 2\",\r\n    \"Content\": \"lorempaskjdaskjdhasdhjashdkajshdkajhasdsjh\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://{{serverUrl}}/api/post",
+							"protocol": "https",
+							"host": [
+								"{{serverUrl}}"
+							],
+							"path": [
+								"api",
+								"post"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post Comment",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": " \"Lorem ipsum dtest\"",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://{{serverUrl}}/api/post/3/comment",
+							"protocol": "https",
+							"host": [
+								"{{serverUrl}}"
+							],
+							"path": [
+								"api",
+								"post",
+								"3",
+								"comment"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Posts",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://{{serverUrl}}/api/post",
+							"protocol": "https",
+							"host": [
+								"{{serverUrl}}"
+							],
+							"path": [
+								"api",
+								"post"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Posts Comments",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://{{serverUrl}}/api/post/4/comment",
+							"protocol": "https",
+							"host": [
+								"{{serverUrl}}"
+							],
+							"path": [
+								"api",
+								"post",
+								"4",
+								"comment"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Submit",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "https://{{serverUrl}}/api/post/4/submit",
+							"protocol": "https",
+							"host": [
+								"{{serverUrl}}"
+							],
+							"path": [
+								"api",
+								"post",
+								"4",
+								"submit"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Approve",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "https://{{serverUrl}}/api/post/1/approve",
+							"protocol": "https",
+							"host": [
+								"{{serverUrl}}"
+							],
+							"path": [
+								"api",
+								"post",
+								"1",
+								"approve"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Reject",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"reject_comments\": \"rejected because i'm starving.\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://{{serverUrl}}/api/post/3/reject",
+							"protocol": "https",
+							"host": [
+								"{{serverUrl}}"
+							],
+							"path": [
+								"api",
+								"post",
+								"3",
+								"reject"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
